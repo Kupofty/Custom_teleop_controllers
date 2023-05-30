@@ -41,12 +41,20 @@ class MouseTwist {
 
 int main(int argc, char **argv)
 {
-    //ROS Node
-    ros::init(argc, argv, "mouse_twist_node");
-    ros::NodeHandle nh;
+    try
+    {
+        //ROS Node
+        ros::init(argc, argv, "mouse_twist_node");
+        ros::NodeHandle nh;
 
-    //ROS Object
-    MouseTwist mousetwist = MouseTwist();
-    mousetwist.init(&nh);
+        //ROS Object
+        MouseTwist mousetwist = MouseTwist();
+        mousetwist.init(&nh);
+    }
+
+    catch(ros::Exception &e)
+    {
+        ROS_ERROR("Error occured: %s ", e.what());
+    }
 
 }
